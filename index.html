@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html lang="en" class="dark">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OblivionSMP | Minecraft Server</title>
+
+    
+
+    <!-- Tailwind CSS CDN -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    
+
+    <!-- Font Awesome Icons -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    
+
+    <!-- Google Fonts: Inter & Outfit -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@600;800;900&display=swap" rel="stylesheet">
+
+
+
+    <script>
+
+        tailwind.config = {
+
+            darkMode: 'class',
+
+            theme: {
+
+                extend: {
+
+                    fontFamily: {
+
+                        sans: ['Inter', 'sans-serif'],
+
+                        display: ['Outfit', 'sans-serif'],
+
+                    },
+
+                    animation: {
+
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+
+                        'float': 'float 5s ease-in-out infinite',
+
+                    },
+
+                    keyframes: {
+
+                        glow: {
+
+                            '0%': { filter: 'drop-shadow(0 0 15px rgba(139, 92, 246, 0.3))' },
+
+                            '100%': { filter: 'drop-shadow(0 0 35px rgba(168, 85, 247, 0.6))' }
+
+                        },
+
+                        float: {
+
+                            '0%, 100%': { transform: 'translateY(0px)' },
+
+                            '50%': { transform: 'translateY(-8px)' },
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+
+
+    <style>
+
+        /* Glassmorphism Styling */
+
+        .glass-card {
+
+            background: rgba(18, 12, 38, 0.55);
+
+            backdrop-filter: blur(20px);
+
+            -webkit-backdrop-filter: blur(20px);
+
+            border: 1px solid rgba(168, 85, 247, 0.2);
+
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+        }
+
+
+
+        .text-gradient {
+
+            background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 40%, #818cf8 100%);
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+
+
+        /* Animated Canvas Particles */
+
+        #particles-canvas {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            z-index: 0;
+
+            pointer-events: none;
+
+        }
+
+    </style>
+
+</head>
+
+<body class="bg-[#07040d] text-slate-100 font-sans min-h-screen flex items-center justify-center p-4 relative overflow-hidden selection:bg-purple-500 selection:text-white">
+
+
+
+    <!-- Canvas for Particle Background -->
+
+    <canvas id="particles-canvas"></canvas>
+
+
+
+    <!-- Ambient Glowing Orbs -->
+
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+
+
+    <!-- Central Minimalist Hero Card -->
+
+    <main class="relative z-10 w-full max-w-xl animate-float">
+
+        <div class="glass-card rounded-3xl p-8 sm:p-12 text-center flex flex-col items-center">
+
+            
+
+            <!-- Work In Progress Badge -->
+
+            <div class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-purple-950/50 border border-purple-500/30 text-purple-300 text-xs font-medium tracking-wide uppercase mb-8 shadow-inner">
+
+                <span class="relative flex h-2 w-2">
+
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-400"></span>
+
+                </span>
+
+                <span>Work In Progress • Coming Soon</span>
+
+            </div>
+
+
+
+            <!-- Server Title & Branding -->
+
+            <h1 class="font-display font-black text-5xl sm:text-6xl tracking-tight mb-3 animate-glow">
+
+                OBLIVION<span class="text-gradient">SMP</span>
+
+            </h1>
+
+
+
+            <p class="text-xs uppercase tracking-[0.25em] text-purple-300/70 font-semibold mb-6">
+
+                Minecraft Survival Server
+
+            </p>
+
+
+
+            <!-- English Teaser Text -->
+
+            <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed max-w-sm mb-10">
+
+                A new Minecraft SMP experience is currently in development. Join our Discord server to stay tuned for updates and launch announcements!
+
+            </p>
+
+
+
+            <!-- Prominent Discord CTA Button -->
+
+            <a href="https://discord.gg/BT2GteU5V" 
+
+               target="_blank" 
+
+               rel="noopener noreferrer" 
+
+               class="group relative w-full sm:w-auto min-w-[240px] inline-flex items-center justify-center space-x-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold text-base shadow-lg shadow-purple-600/30 hover:shadow-purple-600/50 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300">
+
+                <i class="fa-brands fa-discord text-xl group-hover:rotate-12 transition-transform duration-300"></i>
+
+                <span>Join our Discord</span>
+
+                <i class="fa-solid fa-arrow-right text-xs opacity-70 group-hover:translate-x-1 transition-transform"></i>
+
+            </a>
+
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- Background Particle Animation Script -->
+
+    <script>
+
+        const canvas = document.getElementById('particles-canvas');
+
+        const ctx = canvas.getContext('2d');
+
+
+
+        let particles = [];
+
+        const particleCount = 40;
+
+
+
+        function resizeCanvas() {
+
+            canvas.width = window.innerWidth;
+
+            canvas.height = window.innerHeight;
+
+        }
+
+
+
+        window.addEventListener('resize', resizeCanvas);
+
+        resizeCanvas();
+
+
+
+        class Particle {
+
+            constructor() {
+
+                this.reset();
+
+            }
+
+
+
+            reset() {
+
+                this.x = Math.random() * canvas.width;
+
+                this.y = Math.random() * canvas.height;
+
+                this.size = Math.random() * 2 + 0.8;
+
+                this.speedY = -(Math.random() * 0.3 + 0.1);
+
+                this.speedX = (Math.random() - 0.5) * 0.15;
+
+                this.opacity = Math.random() * 0.5 + 0.2;
+
+            }
+
+
+
+            update() {
+
+                this.y += this.speedY;
+
+                this.x += this.speedX;
+
+
+
+                if (this.y < 0) {
+
+                    this.y = canvas.height;
+
+                    this.x = Math.random() * canvas.width;
+
+                }
+
+            }
+
+
+
+            draw() {
+
+                ctx.fillStyle = `rgba(192, 132, 252, ${this.opacity})`;
+
+                ctx.beginPath();
+
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
+                ctx.fill();
+
+            }
+
+        }
+
+
+
+        function initParticles() {
+
+            particles = [];
+
+            for (let i = 0; i < particleCount; i++) {
+
+                particles.push(new Particle());
+
+            }
+
+        }
+
+
+
+        function animateParticles() {
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+
+                p.update();
+
+                p.draw();
+
+            });
+
+            requestAnimationFrame(animateParticles);
+
+        }
+
+
+
+        window.onload = function() {
+
+            initParticles();
+
+            animateParticles();
+
+        };
+
+    </script>
+
+</body>
+
+</html>
